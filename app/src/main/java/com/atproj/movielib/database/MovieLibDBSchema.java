@@ -8,7 +8,7 @@ public class MovieLibDBSchema {
 
         public static final class Cols {
 
-            public static final String uuid = "id";
+            public static final String id = "uuid";
             public static final String title = "title";
             public static final String original_title = "original_title";
             public static final String poster_path = "poster_path";
@@ -42,10 +42,10 @@ public class MovieLibDBSchema {
 
         public static final class Cols {
 
-            public static final String uuid = "id";
+            public static final String id = "uuid";
             public static final String iso_639_1 = "iso_639_1";
             public static final String iso_3166_1 = "iso_3166_1";
-            public static final String key = "key";
+            public static final String key = "key_val";
             public static final String name = "name";
             public static final String site = "site";
             public static final String size = "size";

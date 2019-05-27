@@ -24,8 +24,8 @@ public class VideosPresenter extends BasePresenter {
         this.view = view;
     }
 
-    public void getVideos(int movieId) {
-        movieInteractor.getMovieVideos(movieId, new PaginatedResourceRequestCallback<Video>() {
+    public void getVideos(int movieId, int page) {
+        movieInteractor.getMovieVideos(movieId, page, new PaginatedResourceRequestCallback<Video>() {
             @Override
             public void onSuccess(List<Video> resource, int page, int totalResults, int totalPages) {
                 view.onResourcesResponse(resource, page, totalResults, totalPages);

@@ -1,5 +1,6 @@
 package com.atproj.movielib.model;
 
+import org.json.JSONObject;
 import org.parceler.Parcel;
 
 @Parcel
@@ -40,5 +41,25 @@ public class Company {
 
     public void setOriginCountry(String originCountry) {
         this.origin_country = origin_country;
+    }
+
+    public String toString() {
+        return "{'id': '" + id +
+                "'; 'name': '" + name +
+                "'; 'logo_path': '" + logo_path +
+                "'; 'origin_country': '" + origin_country +
+                "'}";
+    }
+
+    public static Company fromJson(JSONObject json) {
+        Company company = new Company();
+        try {
+            company.setId(json.getInt("id"));
+            company.setName(json.getString("name"));
+            company.setLogoPath(json.getString("logo_path"));
+            company.setOriginCountry(json.getString("origin_country"));
+        } catch (Exception e) {};
+
+        return company;
     }
 }

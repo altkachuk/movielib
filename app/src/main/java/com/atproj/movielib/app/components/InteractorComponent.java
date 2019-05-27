@@ -10,8 +10,10 @@ import dagger.Component;
                 InteractorModule.class
         },
         dependencies = {
+                ApplicationComponent.class,
                 RepositoryComponent.class,
-                ExecutorComponent.class
+                ExecutorComponent.class,
+                CacheComponent.class
         }
 )
 public interface InteractorComponent {

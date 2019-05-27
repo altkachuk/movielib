@@ -118,7 +118,7 @@ public class MovieActivity extends ResourceBaseActivity implements MovieView, Vi
             needLoad = false;
             setLoadingState();
             moviePresenter.getMovie(movieId);
-            videosPresenter.getVideos(movieId);
+            videosPresenter.getVideos(movieId, 1);
         }
     }
 
@@ -195,7 +195,7 @@ public class MovieActivity extends ResourceBaseActivity implements MovieView, Vi
     protected void onReload() {
         setLoadingState();
         moviePresenter.getMovie(movieId);
-        videosPresenter.getVideos(movieId);
+        videosPresenter.getVideos(movieId, 1);
     }
 
     //                          Method(s)

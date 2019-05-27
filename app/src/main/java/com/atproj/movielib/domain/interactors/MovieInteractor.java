@@ -11,6 +11,6 @@ public interface MovieInteractor {
 
     void getMovieDetails(int id, final ResourceRequestCallback<Movie> callback);
 
-    void getMovieVideos(int movieId, final PaginatedResourceRequestCallback<Video> callback);
+    void getMovieVideos(int movieId, int page, final PaginatedResourceRequestCallback<Video> callback);
 
 }

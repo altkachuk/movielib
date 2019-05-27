@@ -1,13 +1,17 @@
 package com.atproj.movielib.app;
 
 import com.atproj.movielib.app.components.ApplicationComponent;
+import com.atproj.movielib.app.components.CacheComponent;
 import com.atproj.movielib.app.components.DaggerApplicationComponent;
+import com.atproj.movielib.app.components.DaggerCacheComponent;
+import com.atproj.movielib.app.components.DaggerDatabaseComponent;
 import com.atproj.movielib.app.components.DaggerExecutorComponent;
 import com.atproj.movielib.app.components.DaggerInteractorComponent;
 import com.atproj.movielib.app.components.DaggerNetworkComponent;
 import com.atproj.movielib.app.components.DaggerPicassoComponent;
 import com.atproj.movielib.app.components.DaggerRepositoryComponent;
 import com.atproj.movielib.app.components.DaggerRuntimeComponent;
+import com.atproj.movielib.app.components.DatabaseComponent;
 import com.atproj.movielib.app.components.ExecutorComponent;
 import com.atproj.movielib.app.components.InteractorComponent;
 import com.atproj.movielib.app.components.NetworkComponent;
@@ -15,6 +19,8 @@ import com.atproj.movielib.app.components.PicassoComponent;
 import com.atproj.movielib.app.components.RepositoryComponent;
 import com.atproj.movielib.app.components.RuntimeComponent;
 import com.atproj.movielib.app.modules.ApplicationModule;
+import com.atproj.movielib.app.modules.CacheModule;
+import com.atproj.movielib.app.modules.DatabaseModule;
 import com.atproj.movielib.app.modules.ExecutorModule;
 import com.atproj.movielib.app.modules.InteractorModule;
 import com.atproj.movielib.app.modules.NetworkModule;
@@ -60,10 +66,22 @@ public class Injector {
                 .networkComponent(networkComponent)
                 .build();
 
+        DatabaseComponent databaseComponent = DaggerDatabaseComponent.builder()
+                .databaseModule(new DatabaseModule())
+                .applicationComponent(applicationComponent)
+                .build();
+
+        CacheComponent cacheComponent = DaggerCacheComponent.builder()
+                .cacheModule(new CacheModule())
+                .databaseComponent(databaseComponent)
+                .build();
+
         InteractorComponent interactorComponent = DaggerInteractorComponent.builder()
                 .interactorModule(new InteractorModule())
+                .applicationComponent(applicationComponent)
                 .executorComponent(executorComponent)
                 .repositoryComponent(repositoryComponent)
+                .cacheComponent(cacheComponent)
                 .build();
 
         PicassoComponent picassoComponent = DaggerPicassoComponent.builder()

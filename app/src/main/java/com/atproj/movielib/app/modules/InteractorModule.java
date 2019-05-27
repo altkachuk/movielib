@@ -1,5 +1,8 @@
 package com.atproj.movielib.app.modules;
 
+import android.content.Context;
+
+import com.atproj.movielib.domain.cache.MovieLibCache;
 import com.atproj.movielib.domain.executor.InteractorExecutor;
 import com.atproj.movielib.domain.executor.MainThreadExecutor;
 import com.atproj.movielib.domain.interactors.MovieInteractor;
@@ -17,8 +20,10 @@ public class InteractorModule {
     }
 
     @Provides
-    MovieInteractor movieInteractor(InteractorExecutor interactorExecutor, MainThreadExecutor mainThreadExecutor, MovieLibRepository repository) {
-        return new MovieInteractorImpl(interactorExecutor, mainThreadExecutor, repository);
+    MovieInteractor movieInteractor(Context context, InteractorExecutor interactorExecutor,
+                                    MainThreadExecutor mainThreadExecutor,
+                                    MovieLibRepository repository, MovieLibCache cache) {
+        return new MovieInteractorImpl(context, interactorExecutor, mainThreadExecutor, repository, cache);
     }
 
 }
