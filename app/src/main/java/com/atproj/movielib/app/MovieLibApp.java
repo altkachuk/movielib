@@ -5,8 +5,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.atproj.movielib.BuildConfig;
-import com.atproj.movielib.app.components.ApplicationComponent;;
-import com.atproj.movielib.app.components.MovieLibComponent;
+;
 import com.atproj.movielib.utils.ClientUtil;
 
 import java.lang.reflect.Method;
@@ -20,6 +19,7 @@ public class MovieLibApp extends Application {
         super.onCreate();
 
         ClientUtil.setClientUrl(BuildConfig.BUILD_TYPE, BuildConfig.HOST);
+        ClientUtil.setImageHostUrl(BuildConfig.BUILD_TYPE, BuildConfig.IMAGE_HOST);
         ClientUtil.setApiKey(BuildConfig.BUILD_TYPE, BuildConfig.API_KEY);
 
         initializeDependencies();

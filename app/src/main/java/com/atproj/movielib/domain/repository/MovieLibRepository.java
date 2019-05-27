@@ -13,6 +13,6 @@ public interface MovieLibRepository {
 
     Movie getMovieDetails(ResourceRequest request) throws BaseException;
 
-    PaginatedResourcesResponse<Video> getMovieVideos(String movieId) throws BaseException;
+    PaginatedResourcesResponse<Video> getMovieVideos(ResourceRequest request) throws BaseException;
 
 }

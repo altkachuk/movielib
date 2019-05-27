@@ -34,8 +34,8 @@ public class MovieLibApiRepository implements MovieLibRepository {
     }
 
     @Override
-    public PaginatedResourcesResponse<Video> getMovieVideos(String movieId) throws BaseException {
-        return null;
+    public PaginatedResourcesResponse<Video> getMovieVideos(ResourceRequest request) throws BaseException {
+        return this.call(movieLibApi.getMovieVideos(request.getId()));
     }
 
     public <T> T call(Call<T> apiResourceCall) {

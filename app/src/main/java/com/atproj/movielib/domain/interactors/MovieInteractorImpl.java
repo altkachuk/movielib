@@ -26,8 +26,9 @@ public class MovieInteractorImpl extends AbstractInteractor implements MovieInte
     }
 
     @Override
-    public void searchMovie(String query, final PaginatedResourceRequestCallback<Movie> callback) {
-        final WeakReference<ResourceRequest> request = new WeakReference<>(new ResourceRequest().query(query));
+    public void searchMovie(String query, int page, final PaginatedResourceRequestCallback<Movie> callback) {
+        final WeakReference<ResourceRequest> request = new WeakReference<>(new ResourceRequest()
+                .query(query).page(page));
         getInteractorExecutor().run(new Interactor() {
             @Override
             public void run() {
@@ -42,8 +43,8 @@ public class MovieInteractorImpl extends AbstractInteractor implements MovieInte
 
     }
 
-    public void getMovieDetails(String id, final ResourceRequestCallback<Movie> callback) {
-        final WeakReference<ResourceRequest> request = new WeakReference<>(new ResourceRequest().id(id));
+    public void getMovieDetails(int id, final ResourceRequestCallback<Movie> callback) {
+        final WeakReference<ResourceRequest> request = new WeakReference<>(new ResourceRequest().id(String.valueOf(id)));
         getInteractorExecutor().run(new Interactor() {
             @Override
             public void run() {
@@ -59,7 +60,18 @@ public class MovieInteractorImpl extends AbstractInteractor implements MovieInte
 
 
     @Override
-    public void getMovieVideos(String movieId, final PaginatedResourceRequestCallback<Video> callback) {
-
+    public void getMovieVideos(int movieId, final PaginatedResourceRequestCallback<Video> callback) {
+        final WeakReference<ResourceRequest> request = new WeakReference<>(new ResourceRequest().id(String.valueOf(movieId)));
+        getInteractorExecutor().run(new Interactor() {
+            @Override
+            public void run() {
+                MovieInteractorImpl.super.doGetPaginatedResource(request.get(), callback, new PaginatedResourceGetter() {
+                    @Override
+                    public PaginatedResourcesResponse getPaginatedResource(ResourceRequest resourceRequest) {
+                        return repository.getMovieVideos(request.get());
+                    }
+                });
+            }
+        });
     }
 }

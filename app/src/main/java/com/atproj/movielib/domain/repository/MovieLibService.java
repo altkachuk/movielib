@@ -28,7 +28,7 @@ public interface MovieLibService {
     );
 
     @GET(VERSION + "/" + Movie.API_RESOURCE_NAME + "/{movie_id}/" + Video.API_RESOURCE_NAME)
-    PaginatedResourcesResponse<Video> getMovieVideos(
+    Call<PaginatedResourcesResponse<Video>> getMovieVideos(
             @Path("movie_id") String movieId
     );
 }

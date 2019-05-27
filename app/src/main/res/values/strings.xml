@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MovieLib</string>
+    <string name="of">of</string>
+    <string name="minutes">min</string>
+    <string name="request_error_message">Ooops. A little technical problem occurred.</string>
+    <string name="reload">Reload</string>
 </resources>

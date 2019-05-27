@@ -9,6 +9,7 @@ public class ResourceRequest<Resource> {
     private final static AtomicInteger requestIdGenerator = new AtomicInteger();
 
     protected final static String QUERY_KEY = "query";
+    protected final static String PAGE_KEY = "page";
 
     private final int requestId;
 
@@ -29,6 +30,17 @@ public class ResourceRequest<Resource> {
         if (query != null && !query.isEmpty()) {
             params.put(QUERY_KEY, query);
         }
+        return this;
+    }
+
+    public ResourceRequest page(int page) {
+        if (page < 1) {
+            page = 1;
+        }
+        if (page > 1000) {
+            page = 1000;
+        }
+        params.put(PAGE_KEY, String.valueOf(page));
         return this;
     }
 

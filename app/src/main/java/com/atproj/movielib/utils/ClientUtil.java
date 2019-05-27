@@ -9,6 +9,7 @@ import java.util.Map;
 public class ClientUtil {
 
     private static String clientUrl;
+    private static String imageHostUrl;
     private static String apiKey;
 
     public static String getClientUrl() {
@@ -18,6 +19,15 @@ public class ClientUtil {
     public static void setClientUrl(String buildConfig, String clientUrlsMap) {
         Map<String, String> configMap = getConfigMap(clientUrlsMap);
         ClientUtil.clientUrl = configMap.get(buildConfig);
+    }
+
+    public static String getImageHostUrl() {
+        return imageHostUrl != null ? imageHostUrl : "";
+    }
+
+    public static void setImageHostUrl(String buildConfig, String imageHostUrlsMap) {
+        Map<String, String> configMap = getConfigMap(imageHostUrlsMap);
+        ClientUtil.imageHostUrl = configMap.get(buildConfig);
     }
 
     public static String getApiKey() {

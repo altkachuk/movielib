@@ -7,10 +7,10 @@ import com.atproj.movielib.model.Video;
 
 public interface MovieInteractor {
 
-    void searchMovie(String query, final PaginatedResourceRequestCallback<Movie> callback);
+    void searchMovie(String query, int page, final PaginatedResourceRequestCallback<Movie> callback);
 
-    void getMovieDetails(String id, final ResourceRequestCallback<Movie> callback);
+    void getMovieDetails(int id, final ResourceRequestCallback<Movie> callback);
 
-    void getMovieVideos(String movieId, final PaginatedResourceRequestCallback<Video> callback);
+    void getMovieVideos(int movieId, final PaginatedResourceRequestCallback<Video> callback);
 
 }
