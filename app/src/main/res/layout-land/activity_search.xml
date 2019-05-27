@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true">
+        android:gravity="center_vertical">
 
         <EditText
             android:id="@+id/search_edit_text"
@@ -27,6 +25,7 @@
             android:layout_height="30dp"
             android:padding="2dp"
             android:src="@drawable/close"/>
+
 
     </LinearLayout>
 

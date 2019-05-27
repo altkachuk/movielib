@@ -80,6 +80,7 @@ public class MovieLibActivity extends BaseActivity implements SearchMovieView {
         if (currentQuery == null) {
             currentQuery = "";
         }
+        moviesRecyclerView.requestFocus();
     }
 
     @Override

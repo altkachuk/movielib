@@ -3,9 +3,11 @@ package com.atproj.movielib.database;
 public class MovieLibDBSchema {
 
     public static final class MoviesTable {
+
         public static final String name = "movies";
 
         public static final class Cols {
+
             public static final String uuid = "id";
             public static final String title = "title";
             public static final String original_title = "original_title";
@@ -32,6 +34,26 @@ public class MovieLibDBSchema {
             public static final String status = "status";
             public static final String tagline = "tagline";
         }
+    }
+
+    public static final class VideosTable {
+
+        public static final String name = "videos";
+
+        public static final class Cols {
+
+            public static final String uuid = "id";
+            public static final String iso_639_1 = "iso_639_1";
+            public static final String iso_3166_1 = "iso_3166_1";
+            public static final String key = "key";
+            public static final String name = "name";
+            public static final String site = "site";
+            public static final String size = "size";
+            public static final String type = "type";
+            public static final String movie_id = "movie_id";
+
+        }
+
     }
 
 }
